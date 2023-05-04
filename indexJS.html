@@ -1,0 +1,61 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+  <meta charset="UTF-8"> 
+  <title>Exemplo de JS interno</title> 
+</head> 
+<body> 
+ 
+  <p id="resultado"></p> 
+ 
+  <script> 
+    function getMaiorPalavra(vetorPalavras){ 
+      let numPalavras = vetorPalavras.length; 
+      /* 
+      Caso base - vetor tem tamanho 1: logo a maior frase é a 
+      única armazenada no vetor 
+      o método shift RETIRA o primeiro elemento do vetor 
+      */ 
+      if(numPalavras == 1){ 
+        return vetorPalavras.shift(); 
+      } 
+      /* 
+      atribuiu a variável palavraCorrente a primeira palavra do 
+      vetor e retira o elemento do vetor (função shift) Ex: ['oi', 
+      'ola mundo', 'hi', 'hello world'] 
+      palavraCorrente será 'oi' e o vetorPalavras = ['ola 
+      mundo', 'hi', 'hello world'] 
+      */ 
+      let palavraCorrente = vetorPalavras.shift(); 
+      /* 
+      Caso recursivo, vai chamar novamente a função, só que 
+      agora o vetor está reduzido do primeiro elemento - 
+      vetorPalavras = ['ola mundo', 'hi', 'hello world'] 
+      */ 
+      let maiorPalavra = getMaiorPalavra(vetorPalavras); 
+      /* 
+      vai comparar, para cada iteração da recursão, o 
+      palavraCorrente com o retornado, chamado de "maiorPalavra" da 
+      iteração recursiva subsequente. 
+      é como se, ao chegar no último elemento do vetor, o 
+      algoritmo comparasse o último com o antipenúltimo e 
+      retornasse o maior. 
+      Esse processo é repetido até chegar ao primeiro elemento, 
+      fazendo com que todos os elementos sejam avaliados e a maior 
+      palabra de todas, retornada no fim. 
+      */ 
+      if(palavraCorrente.length >= maiorPalavra.length){ 
+        return palavraCorrente; 
+      } else { 
+        return maiorPalavra; 
+      } 
+    } 
+ 
+    let palavras = ['oi','ola mundo','esse texto é igual o enem: gigante','imd','programação']; 
+    let maiorP = getMaiorPalavra(palavras); 
+ 
+    document.getElementById('resultado').innerHTML = maiorP; 
+  </script> 
+ 
+</body> 
+</html>

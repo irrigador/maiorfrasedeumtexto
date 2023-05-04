@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-Br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Questão Dois</title>
+  <style>
+    p {
+      font-size: 30px;
+    }
+  </style>
+</head>
+<body>
+  
+<p id="resultado"></p>
+
+<script>
+function getMaiorPalavra(vetorPalavras) {
+  let numPalavras = vetorPalavras.length;
+
+  if(numPalavras == 1) {
+  return vetorPalavras.shift();
+}
+
+let palavraCorrente = vetorPalavras.shift();
+
+let maiorPalavra = getMaiorPalavra(vetorPalavras)
+
+if(palavraCorrente.length >= maiorPalavra.length) {
+  return palavraCorrente; }
+  else {
+    return maiorPalavra
+  }
+}
+
+let palavras = ['oi','ola mundo','Esse algortimo pega o maior frase dentre varias frases','Se pararmos pra pensar, não precisamos parar para pensar, eis que é possível andar e pensar simultaneamente','programação'];
+let maiorP = getMaiorPalavra(palavras);
+
+document.getElementById('resultado').innerHTML = maiorP; 
+
+</script>
+</body>
+</html>
